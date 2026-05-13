@@ -1,0 +1,76 @@
+%% skill
+name: webapp-testing
+version: 1.0.0
+description: Tests local web applications using Playwright
+input: [url, port]
+output: [test-results]
+
+@ trigger: user asks to test a web application
+@ trigger: user mentions Playwright
+@ skip: user is testing a CLI tool
+@ skip: user is testing a mobile app
+
+# Overview
+  * fact: use native Python Playwright scripts for all web testing
+  * fact: helper scripts are available in scripts/ — run with --help before reading source
+    ^ context: scripts can be large and pollute the context window —
+      treat them as black boxes and invoke directly
+
+# Decision Tree
+  $ if: app is static HTML
+    $ step: read the HTML file directly to identify selectors
+    $ step: write Playwright script using discovered selectors
+  $ else:
+    $ if: server is not already running
+      $ step: run python scripts/with_server.py --help
+      $ step: use the helper to start the server
+    $ else:
+      $ step: navigate and wait for networkidle
+      $ step: take screenshot or inspect DOM
+      $ step: identify selectors from rendered state
+      $ step: execute actions with discovered selectors
+
+# Setup
+  ~ example: single server
+    ```bash
+    python scripts/with_server.py --server "npm run dev" --port 5173 -- python your_automation.py
+    ```
+
+  ~ example: multiple servers
+    ```bash
+    python scripts/with_server.py \
+      --server "cd backend && python server.py" --port 3000 \
+      --server "cd frontend && npm run dev" --port 5173 \
+      -- python your_automation.py
+    ```
+
+# Writing Scripts
+  ! warn: always wait for networkidle before inspecting the DOM
+    ^ context: actions execute before JS has finished loading —
+      selectors will not resolve correctly
+
+  ~ example: basic Playwright script
+    ```python
+    from playwright.sync_api import sync_playwright
+
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=True)
+        page = browser.new_page()
+        page.goto('http://localhost:5173')
+        page.wait_for_load_state('networkidle')
+        # your automation logic here
+        browser.close()
+    ```
+
+  / counter: wrong approach — inspecting DOM before networkidle
+    ```python
+    page.goto('http://localhost:5173')
+    page.locator('button').click()
+    page.wait_for_load_state('networkidle')
+    ```
+    ^ context: the locator executes before JS has finished — selectors will not resolve
+
+# Best Practices
+  ! note: always close the browser when done
+  ! note: use descriptive selectors — prefer text=, role=, or IDs over CSS paths
+  ! note: add explicit waits rather than relying on timeouts
