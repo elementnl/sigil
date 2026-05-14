@@ -1,25 +1,24 @@
+<div align="center">
+
 # Sigil
 
-A semantic document format purpose-built for LLM consumption. Unlike markdown, which has no native type system, every block in a Sigil document carries an explicit semantic type — warnings, steps, triggers, facts, definitions — drawn from a fixed vocabulary. The result is structured content that's unambiguous to parse, queryable without heuristics, and self-describing when retrieved out of context.
+**A semantic document format for LLM-native content.**
 
-**File extension:** `.sgl` | **Status:** Spec draft
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Version](https://img.shields.io/badge/version-0.1.0-blue.svg)](CHANGELOG.md)
+[![Status](https://img.shields.io/badge/status-spec%20draft-yellow.svg)](SPEC.md)
+
+[Spec](SPEC.md) · [Examples](EXAMPLES.md) · [Changelog](CHANGELOG.md)
+
+</div>
 
 ---
 
-## The problem
+Sigil gives every block in a document an explicit semantic type, drawn from a fixed vocabulary. Where markdown requires readers to infer meaning from formatting conventions, Sigil declares it.
 
-Markdown was designed for humans to read. In LLM contexts it falls short:
+Designed for machine-primary, human-inspectable content: RAG pipelines, agent memory, skill files, structured generation, and LLM-to-LLM communication.
 
-- No semantic block types — a paragraph is just a paragraph
-- No native metadata or provenance
-- No way to express conditionality in procedural content
-- Chunks lose context when split for retrieval
-
-Authors compensate with ALL-CAPS, ❌/✅ emojis, ad hoc XML tags, and `**bold**` rules — all of which an LLM has to infer meaning from rather than read directly.
-
-## The solution
-
-Sigil replaces inferred semantics with declared ones:
+## Example
 
 ```
 %% skill
@@ -40,9 +39,7 @@ version: 1.0.0
   $ step: run assertions
 ```
 
-Every block type has one meaning. No inference required.
-
-## Quick reference
+## Block types
 
 | Sigil | Meaning |
 |---|---|
@@ -52,18 +49,18 @@ Every block type has one meaning. No inference required.
 | `> term` | Definition |
 | `! note` / `! warn` / `!! critical` | Warnings by severity |
 | `?` | Uncertainty |
-| `~ example` | Concrete example |
+| `~` | Concrete example |
 | `$ step` / `$ if` / `$ else` | Procedural steps and conditionals |
 | `^ context` | Rationale (child block) |
 | `* fact` | Asserted truth |
 | `/ counter` / `/ tradeoff` / `/ exception` | Counterarguments |
 | `->` | Typed reference |
 
-## Repo structure
+## Repo
 
 ```
 SPEC.md              — canonical language definition
-CHANGELOG.md         — versioned changes
+EXAMPLES.md          — annotated examples
 examples/            — reference documents in Sigil format
 tests/conformance/   — input/output pairs all parsers must pass
 rfcs/                — proposals for language changes
@@ -72,6 +69,8 @@ reference-impl/      — parser, validator, serializer, converter (TypeScript)
 
 ## Status
 
-The spec is in active draft. The reference implementation has not been started.
+Spec is in active draft. The reference implementation has not been started. See [SPEC.md](SPEC.md) for the full language definition and [EXAMPLES.md](EXAMPLES.md) for annotated walkthroughs.
 
-See [SPEC.md](SPEC.md) for the full language definition.
+## License
+
+MIT
