@@ -42,3 +42,8 @@ temp/
 # Internal
 research/
 internal/
+
+# Reference implementation
+reference-impl/node_modules/
+reference-impl/dist/
+reference-impl/*.tsbuildinfo
