@@ -230,7 +230,7 @@ A concrete instance, code sample, or usage demonstration. Always a positive exam
 - Code blocks can appear inside
 - `^ context` can nest inside
 
-```
+````
 ~ example: basic Playwright script
   ```python
   page.goto('http://localhost:5173')
@@ -241,7 +241,7 @@ A concrete instance, code sample, or usage demonstration. Always a positive exam
   ```bash
   python scripts/with_server.py --server "npm run dev" --port 5173
   ```
-```
+````
 
 ---
 
@@ -341,7 +341,7 @@ Counterarguments, negative examples, tradeoffs, and exceptions. Three labels, cl
 - Code blocks can appear inside for negative code examples
 - `^ context` can nest inside
 
-```
+````
 / counter: don't use codebase_search for exact text matches
   ^ context: grep is faster and more precise for known strings
 
@@ -360,7 +360,7 @@ Counterarguments, negative examples, tradeoffs, and exceptions. Three labels, cl
   ```
   ^ context: actions execute before JS has finished loading —
     selectors will not resolve correctly
-```
+````
 
 ---
 

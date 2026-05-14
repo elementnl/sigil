@@ -62,7 +62,7 @@ The `%%` header is queryable without reading the body. A routing system can filt
 
 `$ if / $ else` makes conditional logic machine-readable. In the original markdown document this was an ASCII decision tree — visually clear but unparseable. Here the branching structure is explicit. Steps are ordered — sequence matters. One level of nesting: `$ if` inside `$ step` is valid, `$ if` inside `$ if` is not.
 
-```
+````
 # Writing Scripts
 
   ! warn: always wait for networkidle before inspecting the DOM
@@ -91,7 +91,7 @@ The `%%` header is queryable without reading the body. A routing system can filt
     ```
     ^ context: the locator executes before JS has finished —
       the selector will not resolve and the action will silently fail
-```
+````
 
 Three warning levels in action: `! warn` for a real correctness risk, `! note` for soft guidelines. `~ example` is always a positive example of correct usage. `/ counter` is always a negative example — what not to do. They're separate block types because they answer different questions: `~` says "here's how it works," `/` says "here's what breaks."
 
@@ -198,7 +198,7 @@ description: How prompt caching works and how to use it effectively
 
 `?` marks genuine uncertainty. An LLM reading this document treats `?` blocks with lower confidence than `* fact` blocks — it knows not to assert the uncertain content as established fact.
 
-```
+````
 # Common Mistakes
 
   ! warn: putting volatile content before the last cache breakpoint
@@ -228,7 +228,7 @@ description: How prompt caching works and how to use it effectively
 
   -> source: https://docs.anthropic.com/prompt-caching
   -> see-also: token-counting-guide.sgl
-```
+````
 
 In a RAG pipeline, each retrieved chunk from this document carries its block type. A chunk containing `! warn` tells the model "this is a hazard." A chunk containing `* fact` tells it "this is established." A chunk containing `?` tells it "treat this with uncertainty." Without Sigil, every chunk is just text — the model has to infer what kind of content it is from the words alone.
 
