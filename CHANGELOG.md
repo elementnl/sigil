@@ -4,6 +4,25 @@ All notable changes to the Sigil spec will be documented here. Follows [Keep a C
 
 ---
 
+## [0.3.0] — 2026-05-19
+
+### Fixed
+- Code fence tracking — lines inside ` ``` ` fences (including `# comments`) are no longer misclassified as Sigil block sigils
+- Content indentation — multi-line block content now preserves relative indentation through parse and serialize
+- Example labels — `~ example: label` correctly roundtrips; the `example:` prefix was previously stripped during parsing
+- Serializer: `/ counter`, `! warn`, `* fact`, `?`, `$ step` blocks with multi-line content now indent continuation lines correctly
+- Serializer: `^ context` continuation lines now indent one level deeper than the sigil line
+
+### Added
+- Conformance test suite (`tests/conformance/`) — 20 cases covering every block type, all annotation keys, all reference relationship types, and key error conditions
+- `make conform` target — builds the reference impl and runs the full conformance suite
+- `sigil-lang` published to npm
+
+### Changed
+- README updated with install instructions, CLI reference, and API quickstart
+
+---
+
 ## [0.2.0] — 2026-05-14
 
 ### Added

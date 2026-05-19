@@ -28,17 +28,22 @@
     "lint": "eslint src tests",
     "format": "prettier --write src tests",
     "format:check": "prettier --check src tests",
-    "prepublishOnly": "npm run typecheck && npm run lint && npm run test && npm run build"
+    "prepublishOnly": "npm run typecheck && npm run lint && npm run test && npm run build",
+    "release": "release-it",
+    "release:minor": "release-it minor",
+    "release:major": "release-it major"
   },
   "dependencies": {
     "peggy": "^5.1.0"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@release-it/keep-a-changelog": "^7.0.1",
     "@types/node": "^25.8.0",
     "@vitest/coverage-v8": "^4.1.6",
     "eslint": "^10.3.0",
     "prettier": "^3.8.3",
+    "release-it": "^19.2.4",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.59.3",
     "vitest": "^4.1.6"

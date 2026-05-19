@@ -5,8 +5,8 @@
 **A semantic document format for LLM-native content.**
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-0.2.0-blue.svg)](CHANGELOG.md)
-[![npm](https://img.shields.io/badge/npm-sigil--lang-red.svg)](https://www.npmjs.com/package/sigil-lang)
+[![Version](https://img.shields.io/github/v/tag/elementnl/sigil?label=version)](CHANGELOG.md)
+[![npm](https://img.shields.io/npm/v/sigil-lang.svg)](https://www.npmjs.com/package/sigil-lang)
 
 [Spec](SPEC.md) · [Examples](EXAMPLES.md) · [Changelog](CHANGELOG.md)
 
