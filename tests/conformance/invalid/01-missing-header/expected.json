@@ -1,0 +1,6 @@
+{
+  "shouldFail": true,
+  "mode": "strict",
+  "errorType": "SigilParseError",
+  "description": "Document must begin with a %% header on the first line"
+}

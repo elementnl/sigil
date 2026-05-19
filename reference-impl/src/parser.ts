@@ -111,6 +111,7 @@ function tokenizeLines(
     warnings: ParseWarning[],
 ): LineToken[] {
     const tokens: LineToken[] = [];
+    let inCodeFence = false;
 
     for (let i = 0; i < lines.length; i++) {
         const raw = lines[i];
@@ -118,13 +119,28 @@ function tokenizeLines(
 
         if (raw.trim() === '') continue;
 
+        const indentMatch = raw.match(/^( *)/);
+        const indentSpaces = indentMatch ? indentMatch[1].length : 0;
+        const indent = Math.floor(indentSpaces / INDENT_SIZE);
+        const trimmed = raw.slice(indentSpaces);
+
+        // ``` lines toggle fence state and are always classified as content
+        if (trimmed.startsWith('```')) {
+            inCodeFence = !inCodeFence;
+            tokens.push({ kind: 'content', indent, lineNum, raw: trimmed, content: trimmed });
+            continue;
+        }
+
+        // Inside a code fence: treat as raw content without sigil classification
+        if (inCodeFence) {
+            tokens.push({ kind: 'content', indent, lineNum, raw: trimmed, content: trimmed });
+            continue;
+        }
+
         if (raw.match(/^\t/)) {
             if (mode === 'strict') throw new SigilParseError(lineNum, 'Tabs are not allowed; use spaces for indentation');
             warnings.push({ line: lineNum, message: 'Tabs are not allowed; use spaces for indentation' });
         }
-
-        const indentMatch = raw.match(/^( *)/);
-        const indentSpaces = indentMatch ? indentMatch[1].length : 0;
 
         if (indentSpaces % INDENT_SIZE !== 0) {
             if (mode === 'strict') {
@@ -132,9 +148,6 @@ function tokenizeLines(
             }
             warnings.push({ line: lineNum, message: `Indentation must be a multiple of ${INDENT_SIZE} spaces` });
         }
-
-        const indent = Math.floor(indentSpaces / INDENT_SIZE);
-        const trimmed = raw.slice(indentSpaces);
 
         const token = classifyLine(trimmed, indent, lineNum, mode, warnings);
         if (token) tokens.push(token);
@@ -221,11 +234,8 @@ function classifyLine(
     }
 
     // ~ example
-    const exMatch = trimmed.match(/^~ example(?:: (.*))?$/) ?? trimmed.match(/^~ (.+)$/) ?? (trimmed === '~' ? ['~', undefined] : null);
-    if (exMatch) {
-        const labelStr = trimmed.startsWith('~ example:')
-            ? trimmed.slice('~ example:'.length).trim()
-            : trimmed.startsWith('~ ') ? trimmed.slice(2).trim() : undefined;
+    if (trimmed.startsWith('~ ') || trimmed === '~') {
+        const labelStr = trimmed.startsWith('~ ') ? trimmed.slice(2).trim() : undefined;
         return { kind: 'example', indent, lineNum, raw: trimmed, label: labelStr, content: '' };
     }
 
@@ -362,7 +372,8 @@ function buildBlock(
     const contentLines: string[] = token.content ? [token.content] : [];
 
     while (j < tokens.length && tokens[j].indent >= childIndent && tokens[j].kind === 'content') {
-        contentLines.push(tokens[j].content);
+        const relativeSpaces = (tokens[j].indent - childIndent) * INDENT_SIZE;
+        contentLines.push(' '.repeat(relativeSpaces) + tokens[j].content);
         j++;
     }
 

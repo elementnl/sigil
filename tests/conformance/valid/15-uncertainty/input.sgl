@@ -1,0 +1,4 @@
+%% memory
+
+? this behavior may differ across model versions
+? the rate limit is 1000 requests per minute {confidence: low, asof: 2026-01}

@@ -1,0 +1,5 @@
+%% guide
+
+/ counter: avoid using eval in production code
+/ tradeoff: speed vs accuracy when choosing a model
+/ exception: this rule does not apply to sandboxed environments

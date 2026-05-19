@@ -1,0 +1,21 @@
+{
+  "header": {
+    "doctype": "memory"
+  },
+  "blocks": [
+    {
+      "type": "uncertainty",
+      "content": "this behavior may differ across model versions",
+      "line": 3
+    },
+    {
+      "type": "uncertainty",
+      "content": "the rate limit is 1000 requests per minute",
+      "line": 4,
+      "annotations": {
+        "confidence": "low",
+        "asof": "2026-01"
+      }
+    }
+  ]
+}

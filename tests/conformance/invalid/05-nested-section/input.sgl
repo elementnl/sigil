@@ -1,0 +1,5 @@
+%% reference
+
+# Outer Section
+  # Inner Section
+    * fact: nested sections are a spec violation

@@ -1,0 +1,19 @@
+{
+  "header": {
+    "doctype": "spec"
+  },
+  "blocks": [
+    {
+      "type": "define",
+      "term": "tokenization",
+      "content": "the process of splitting text into discrete units for model input",
+      "line": 3
+    },
+    {
+      "type": "define",
+      "term": "context window",
+      "content": "the maximum number of tokens a model can process in a single request",
+      "line": 4
+    }
+  ]
+}

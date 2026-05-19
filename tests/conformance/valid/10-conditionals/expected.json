@@ -1,0 +1,43 @@
+{
+  "header": {
+    "doctype": "skill"
+  },
+  "blocks": [
+    {
+      "type": "if",
+      "condition": "user provides a URL",
+      "children": [
+        {
+          "type": "fact",
+          "content": "validate the URL format first",
+          "line": 4
+        }
+      ],
+      "line": 3
+    },
+    {
+      "type": "elseif",
+      "condition": "user provides a file path",
+      "children": [
+        {
+          "type": "fact",
+          "content": "check that the file exists",
+          "line": 6
+        }
+      ],
+      "line": 5
+    },
+    {
+      "type": "else",
+      "children": [
+        {
+          "type": "warn",
+          "label": "warn",
+          "content": "no input provided — ask the user",
+          "line": 8
+        }
+      ],
+      "line": 7
+    }
+  ]
+}

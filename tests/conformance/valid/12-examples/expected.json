@@ -1,0 +1,19 @@
+{
+  "header": {
+    "doctype": "guide"
+  },
+  "blocks": [
+    {
+      "type": "example",
+      "content": "run the command with --help to see all options",
+      "line": 3,
+      "label": "example: basic usage"
+    },
+    {
+      "type": "example",
+      "content": "set the environment variable before running",
+      "line": 6,
+      "label": "example: advanced configuration"
+    }
+  ]
+}

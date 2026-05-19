@@ -20,15 +20,14 @@ output: [test-results]
   $ if: app is static HTML
     $ step: read the HTML file directly to identify selectors
     $ step: write Playwright script using discovered selectors
+  $ else if: server is not already running
+    $ step: run python scripts/with_server.py --help
+    $ step: use the helper to start the server
   $ else:
-    $ if: server is not already running
-      $ step: run python scripts/with_server.py --help
-      $ step: use the helper to start the server
-    $ else:
-      $ step: navigate and wait for networkidle
-      $ step: take screenshot or inspect DOM
-      $ step: identify selectors from rendered state
-      $ step: execute actions with discovered selectors
+    $ step: navigate and wait for networkidle
+    $ step: take screenshot or inspect DOM
+    $ step: identify selectors from rendered state
+    $ step: execute actions with discovered selectors
 
 # Setup
   ~ example: single server

@@ -1,0 +1,6 @@
+{
+  "shouldFail": true,
+  "mode": "validate",
+  "errorType": "SigilValidationError",
+  "description": "Sections cannot nest inside other sections"
+}

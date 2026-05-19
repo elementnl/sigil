@@ -1,0 +1,6 @@
+{
+  "shouldFail": true,
+  "mode": "validate",
+  "errorType": "SigilValidationError",
+  "description": "confidence must be one of: high, medium, low — 'very-high' is invalid"
+}

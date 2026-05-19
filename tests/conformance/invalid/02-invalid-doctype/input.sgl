@@ -1,0 +1,5 @@
+%% notebook
+name: bad-doctype
+version: 1.0.0
+
+* fact: notebook is not a valid doctype

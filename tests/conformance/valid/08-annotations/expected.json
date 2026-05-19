@@ -1,0 +1,42 @@
+{
+  "header": {
+    "doctype": "memory"
+  },
+  "blocks": [
+    {
+      "type": "fact",
+      "content": "Claude Opus 4.7 has a 200k token context window",
+      "line": 3,
+      "annotations": {
+        "confidence": "high",
+        "asof": "2026-05"
+      }
+    },
+    {
+      "type": "fact",
+      "content": "streaming is available on all endpoints",
+      "line": 4,
+      "annotations": {
+        "status": "stable",
+        "source": "https://docs.anthropic.com"
+      }
+    },
+    {
+      "type": "uncertainty",
+      "content": "this limit may increase in future releases",
+      "line": 5,
+      "annotations": {
+        "confidence": "low"
+      }
+    },
+    {
+      "type": "fact",
+      "content": "custom annotation keys are supported",
+      "line": 6,
+      "annotations": {
+        "x-author": "varun",
+        "x-reviewed": "true"
+      }
+    }
+  ]
+}

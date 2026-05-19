@@ -1,0 +1,5 @@
+%% guide
+
+! note: check the documentation before proceeding
+! warn: this operation cannot be undone
+!! critical: never commit secrets to the repository

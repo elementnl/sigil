@@ -1,0 +1,43 @@
+{
+  "header": {
+    "doctype": "reference"
+  },
+  "blocks": [
+    {
+      "type": "section",
+      "content": "Overview",
+      "children": [
+        {
+          "type": "fact",
+          "content": "this section describes the system",
+          "line": 4
+        },
+        {
+          "type": "warn",
+          "label": "warn",
+          "content": "read this before proceeding",
+          "line": 5
+        }
+      ],
+      "line": 3
+    },
+    {
+      "type": "section",
+      "content": "Details",
+      "children": [
+        {
+          "type": "fact",
+          "content": "the system uses a two-pass parser",
+          "line": 8
+        },
+        {
+          "type": "warn",
+          "label": "note",
+          "content": "strict mode is recommended for authoring",
+          "line": 9
+        }
+      ],
+      "line": 7
+    }
+  ]
+}

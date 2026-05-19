@@ -1,0 +1,6 @@
+{
+  "shouldFail": true,
+  "mode": "strict",
+  "errorType": "SigilParseError",
+  "description": "Doctype 'notebook' is not in the closed vocabulary"
+}

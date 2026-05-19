@@ -1,0 +1,39 @@
+{
+  "header": {
+    "doctype": "guide"
+  },
+  "blocks": [
+    {
+      "type": "warn",
+      "label": "warn",
+      "content": "always wait for networkidle before inspecting the DOM",
+      "line": 3,
+      "context": {
+        "type": "context",
+        "content": "actions execute before JS has finished loading — selectors will not resolve correctly",
+        "line": 4
+      }
+    },
+    {
+      "type": "fact",
+      "content": "the default timeout is 30 seconds",
+      "line": 5,
+      "context": {
+        "type": "context",
+        "content": "this was chosen to balance responsiveness with reliability on slow connections",
+        "line": 6
+      }
+    },
+    {
+      "type": "counter",
+      "label": "counter",
+      "content": "avoid polling with sleep loops",
+      "line": 7,
+      "context": {
+        "type": "context",
+        "content": "sleep loops waste resources and make tests flaky — use explicit waits instead",
+        "line": 8
+      }
+    }
+  ]
+}

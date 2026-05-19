@@ -1,0 +1,4 @@
+%% spec
+
+> tokenization: the process of splitting text into discrete units for model input
+> context window: the maximum number of tokens a model can process in a single request

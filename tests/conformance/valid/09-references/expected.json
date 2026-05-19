@@ -1,0 +1,85 @@
+{
+  "header": {
+    "doctype": "spec"
+  },
+  "blocks": [
+    {
+      "type": "fact",
+      "content": "this spec depends on the auth design",
+      "line": 3,
+      "references": [
+        {
+          "type": "reference",
+          "relationship": "depends-on",
+          "target": "auth-spec.sgl",
+          "line": 4
+        }
+      ]
+    },
+    {
+      "type": "fact",
+      "content": "see also the security policy",
+      "line": 5,
+      "references": [
+        {
+          "type": "reference",
+          "relationship": "see-also",
+          "target": "security-policy.sgl",
+          "line": 6
+        }
+      ]
+    },
+    {
+      "type": "fact",
+      "content": "this contradicts the old approach",
+      "line": 7,
+      "references": [
+        {
+          "type": "reference",
+          "relationship": "contradicts",
+          "target": "#old-approach",
+          "line": 8
+        }
+      ]
+    },
+    {
+      "type": "fact",
+      "content": "sourced from official documentation",
+      "line": 9,
+      "references": [
+        {
+          "type": "reference",
+          "relationship": "source",
+          "target": "https://docs.example.com",
+          "line": 10
+        }
+      ]
+    },
+    {
+      "type": "fact",
+      "content": "this supersedes the v1 design",
+      "line": 11,
+      "references": [
+        {
+          "type": "reference",
+          "relationship": "supersedes",
+          "target": "v1-design.sgl",
+          "line": 12
+        }
+      ]
+    },
+    {
+      "type": "fact",
+      "content": "this implements the RFC",
+      "line": 13,
+      "references": [
+        {
+          "type": "reference",
+          "relationship": "implements",
+          "target": "rfc-001.sgl",
+          "line": 14
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+%% spec
+
+* fact: this spec depends on the auth design
+  -> depends-on: auth-spec.sgl
+* fact: see also the security policy
+  -> see-also: security-policy.sgl
+* fact: this contradicts the old approach
+  -> contradicts: #old-approach
+* fact: sourced from official documentation
+  -> source: https://docs.example.com
+* fact: this supersedes the v1 design
+  -> supersedes: v1-design.sgl
+* fact: this implements the RFC
+  -> implements: rfc-001.sgl

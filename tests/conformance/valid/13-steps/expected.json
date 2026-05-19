@@ -1,0 +1,38 @@
+{
+  "header": {
+    "doctype": "skill"
+  },
+  "blocks": [
+    {
+      "type": "step",
+      "content": "validate input",
+      "children": [
+        {
+          "type": "warn",
+          "label": "warn",
+          "content": "reject empty strings immediately",
+          "line": 4
+        }
+      ],
+      "line": 3
+    },
+    {
+      "type": "step",
+      "content": "process the request",
+      "children": [
+        {
+          "type": "fact",
+          "content": "results are returned as JSON",
+          "line": 6
+        }
+      ],
+      "line": 5
+    },
+    {
+      "type": "step",
+      "content": "return the response",
+      "children": [],
+      "line": 7
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "shouldFail": true,
+  "mode": "validate",
+  "errorType": "SigilValidationError",
+  "description": "version must follow semver format (major.minor.patch) — bare '1.0' is invalid"
+}

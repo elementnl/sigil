@@ -1,0 +1,17 @@
+{
+  "header": {
+    "doctype": "skill",
+    "name": "example-skill",
+    "version": "1.0.0",
+    "description": "A fully-specified skill for conformance testing",
+    "input": [
+      "url",
+      "port"
+    ],
+    "output": [
+      "result",
+      "status"
+    ]
+  },
+  "blocks": []
+}

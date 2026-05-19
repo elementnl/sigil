@@ -1,4 +1,4 @@
-.PHONY: test lint typecheck check format
+.PHONY: test lint typecheck check format conform
 
 test:
 	npm test
@@ -14,3 +14,9 @@ check:
 
 format:
 	npm run format
+
+conform: build
+	node ../tests/conformance/run.js
+
+build:
+	npm run build

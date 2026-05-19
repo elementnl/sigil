@@ -1,0 +1,7 @@
+%% skill
+
+$ step: validate input
+  ! warn: reject empty strings immediately
+$ step: process the request
+  * fact: results are returned as JSON
+$ step: return the response

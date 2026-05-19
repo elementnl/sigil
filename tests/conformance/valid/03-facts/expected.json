@@ -1,0 +1,22 @@
+{
+  "header": {
+    "doctype": "memory"
+  },
+  "blocks": [
+    {
+      "type": "fact",
+      "content": "the sky is blue",
+      "line": 3
+    },
+    {
+      "type": "fact",
+      "content": "water is composed of hydrogen and oxygen",
+      "line": 4
+    },
+    {
+      "type": "fact",
+      "content": "the default model is claude-opus-4-7",
+      "line": 5
+    }
+  ]
+}

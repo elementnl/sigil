@@ -43,8 +43,10 @@ function serializeBlock(block: Block, depth: number, indentSize: number): string
             return [`${pad}@ skip: ${block.content}${serializeAnnotations(block.annotations)}`];
 
         case 'define': {
-            const head = `${pad}> ${block.term}${block.content ? ': ' + block.content : ''}${serializeAnnotations(block.annotations)}`;
-            const lines = [head];
+            const [firstLine, ...restLines] = block.content ? block.content.split('\n') : [''];
+            const childPad = ' '.repeat((depth + 1) * indentSize);
+            const head = `${pad}> ${block.term}${block.content ? ': ' + firstLine : ''}${serializeAnnotations(block.annotations)}`;
+            const lines = [head, ...restLines.map((l) => `${childPad}${l}`)];
             if (block.context) lines.push(...serializeContext(block.context, depth + 1, indentSize));
             if (block.references?.length) lines.push(...serializeRefs(block.references, depth + 1, indentSize));
             return lines;
@@ -52,16 +54,20 @@ function serializeBlock(block: Block, depth: number, indentSize: number): string
 
         case 'warn': {
             const sigil = block.label === 'critical' ? '!!' : '!';
-            const head = `${pad}${sigil} ${block.label}: ${block.content}${serializeAnnotations(block.annotations)}`;
-            const lines = [head];
+            const [firstLine, ...restLines] = block.content.split('\n');
+            const childPad = ' '.repeat((depth + 1) * indentSize);
+            const head = `${pad}${sigil} ${block.label}: ${firstLine}${serializeAnnotations(block.annotations)}`;
+            const lines = [head, ...restLines.map((l) => `${childPad}${l}`)];
             if (block.context) lines.push(...serializeContext(block.context, depth + 1, indentSize));
             if (block.references?.length) lines.push(...serializeRefs(block.references, depth + 1, indentSize));
             return lines;
         }
 
         case 'uncertainty': {
-            const head = `${pad}? ${block.content}${serializeAnnotations(block.annotations)}`;
-            const lines = [head];
+            const [firstLine, ...restLines] = block.content.split('\n');
+            const childPad = ' '.repeat((depth + 1) * indentSize);
+            const head = `${pad}? ${firstLine}${serializeAnnotations(block.annotations)}`;
+            const lines = [head, ...restLines.map((l) => `${childPad}${l}`)];
             if (block.context) lines.push(...serializeContext(block.context, depth + 1, indentSize));
             if (block.references?.length) lines.push(...serializeRefs(block.references, depth + 1, indentSize));
             return lines;
@@ -82,10 +88,12 @@ function serializeBlock(block: Block, depth: number, indentSize: number): string
         }
 
         case 'step': {
+            const [firstLine, ...restLines] = block.content ? block.content.split('\n') : [''];
+            const childPad = ' '.repeat((depth + 1) * indentSize);
             const head = block.content
-                ? `${pad}$ step: ${block.content}${serializeAnnotations(block.annotations)}`
+                ? `${pad}$ step: ${firstLine}${serializeAnnotations(block.annotations)}`
                 : `${pad}$ step${serializeAnnotations(block.annotations)}`;
-            const lines = [head];
+            const lines = [head, ...restLines.map((l) => `${childPad}${l}`)];
             if (block.context) lines.push(...serializeContext(block.context, depth + 1, indentSize));
             for (const child of block.children) lines.push(...serializeBlock(child, depth + 1, indentSize));
             if (block.references?.length) lines.push(...serializeRefs(block.references, depth + 1, indentSize));
@@ -120,16 +128,20 @@ function serializeBlock(block: Block, depth: number, indentSize: number): string
         }
 
         case 'fact': {
-            const head = `${pad}* fact: ${block.content}${serializeAnnotations(block.annotations)}`;
-            const lines = [head];
+            const [firstLine, ...restLines] = block.content.split('\n');
+            const childPad = ' '.repeat((depth + 1) * indentSize);
+            const head = `${pad}* fact: ${firstLine}${serializeAnnotations(block.annotations)}`;
+            const lines = [head, ...restLines.map((l) => `${childPad}${l}`)];
             if (block.context) lines.push(...serializeContext(block.context, depth + 1, indentSize));
             if (block.references?.length) lines.push(...serializeRefs(block.references, depth + 1, indentSize));
             return lines;
         }
 
         case 'counter': {
-            const head = `${pad}/ ${block.label}: ${block.content}${serializeAnnotations(block.annotations)}`;
-            const lines = [head];
+            const [firstLine, ...restLines] = block.content.split('\n');
+            const childPad = ' '.repeat((depth + 1) * indentSize);
+            const head = `${pad}/ ${block.label}: ${firstLine}${serializeAnnotations(block.annotations)}`;
+            const lines = [head, ...restLines.map((l) => `${childPad}${l}`)];
             if (block.context) lines.push(...serializeContext(block.context, depth + 1, indentSize));
             if (block.references?.length) lines.push(...serializeRefs(block.references, depth + 1, indentSize));
             return lines;
@@ -146,8 +158,9 @@ function serializeBlock(block: Block, depth: number, indentSize: number): string
 
 function serializeContext(ctx: ContextNode, depth: number, indentSize: number): string[] {
     const pad = ' '.repeat(depth * indentSize);
+    const continuationPad = ' '.repeat((depth + 1) * indentSize);
     return ctx.content.split('\n').map((line, i) =>
-        i === 0 ? `${pad}^ context: ${line}` : `${pad}${line}`,
+        i === 0 ? `${pad}^ context: ${line}` : `${continuationPad}${line}`,
     );
 }
 

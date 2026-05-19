@@ -1,0 +1,6 @@
+%% skill
+
+@ trigger: user asks for help with authentication
+@ trigger: user mentions OAuth or JWT
+@ skip: user is testing a CLI tool
+@ skip: project does not have a web frontend

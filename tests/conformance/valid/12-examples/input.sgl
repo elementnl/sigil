@@ -1,0 +1,7 @@
+%% guide
+
+~ example: basic usage
+  run the command with --help to see all options
+
+~ example: advanced configuration
+  set the environment variable before running

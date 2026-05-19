@@ -1,0 +1,8 @@
+%% guide
+
+! warn: always wait for networkidle before inspecting the DOM
+  ^ context: actions execute before JS has finished loading — selectors will not resolve correctly
+* fact: the default timeout is 30 seconds
+  ^ context: this was chosen to balance responsiveness with reliability on slow connections
+/ counter: avoid polling with sleep loops
+  ^ context: sleep loops waste resources and make tests flaky — use explicit waits instead

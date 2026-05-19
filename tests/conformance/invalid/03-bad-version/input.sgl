@@ -1,0 +1,5 @@
+%% skill
+name: bad-version-skill
+version: 1.0
+
+* fact: version 1.0 is not valid semver — must be major.minor.patch

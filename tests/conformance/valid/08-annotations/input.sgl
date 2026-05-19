@@ -1,0 +1,6 @@
+%% memory
+
+* fact: Claude Opus 4.7 has a 200k token context window {confidence: high, asof: 2026-05}
+* fact: streaming is available on all endpoints {status: stable, source: https://docs.anthropic.com}
+? this limit may increase in future releases {confidence: low}
+* fact: custom annotation keys are supported {x-author: varun, x-reviewed: true}

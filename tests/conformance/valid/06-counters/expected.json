@@ -1,0 +1,25 @@
+{
+  "header": {
+    "doctype": "guide"
+  },
+  "blocks": [
+    {
+      "type": "counter",
+      "label": "counter",
+      "content": "avoid using eval in production code",
+      "line": 3
+    },
+    {
+      "type": "counter",
+      "label": "tradeoff",
+      "content": "speed vs accuracy when choosing a model",
+      "line": 4
+    },
+    {
+      "type": "counter",
+      "label": "exception",
+      "content": "this rule does not apply to sandboxed environments",
+      "line": 5
+    }
+  ]
+}

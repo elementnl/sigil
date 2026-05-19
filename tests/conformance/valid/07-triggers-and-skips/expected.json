@@ -1,0 +1,27 @@
+{
+  "header": {
+    "doctype": "skill"
+  },
+  "blocks": [
+    {
+      "type": "trigger",
+      "content": "user asks for help with authentication",
+      "line": 3
+    },
+    {
+      "type": "trigger",
+      "content": "user mentions OAuth or JWT",
+      "line": 4
+    },
+    {
+      "type": "skip",
+      "content": "user is testing a CLI tool",
+      "line": 5
+    },
+    {
+      "type": "skip",
+      "content": "project does not have a web frontend",
+      "line": 6
+    }
+  ]
+}

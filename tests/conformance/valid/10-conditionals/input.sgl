@@ -1,0 +1,8 @@
+%% skill
+
+$ if: user provides a URL
+  * fact: validate the URL format first
+$ else if: user provides a file path
+  * fact: check that the file exists
+$ else:
+  ! warn: no input provided — ask the user

@@ -1,0 +1,9 @@
+%% reference
+
+# Overview
+  * fact: this section describes the system
+  ! warn: read this before proceeding
+
+# Details
+  * fact: the system uses a two-pass parser
+  ! note: strict mode is recommended for authoring

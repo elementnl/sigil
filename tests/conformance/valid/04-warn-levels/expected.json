@@ -1,0 +1,25 @@
+{
+  "header": {
+    "doctype": "guide"
+  },
+  "blocks": [
+    {
+      "type": "warn",
+      "label": "note",
+      "content": "check the documentation before proceeding",
+      "line": 3
+    },
+    {
+      "type": "warn",
+      "label": "warn",
+      "content": "this operation cannot be undone",
+      "line": 4
+    },
+    {
+      "type": "warn",
+      "label": "critical",
+      "content": "never commit secrets to the repository",
+      "line": 5
+    }
+  ]
+}
