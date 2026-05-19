@@ -1,6 +1,6 @@
 {
   "name": "sigil-lang",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Parser, validator, serializer, and converter for the Sigil document format (.sgl)",
   "keywords": [
     "sigil",
@@ -16,7 +16,8 @@
     "sigil": "dist/cli.js"
   },
   "files": [
-    "dist"
+    "dist",
+    "README.md"
   ],
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
